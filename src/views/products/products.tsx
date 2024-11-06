@@ -27,6 +27,7 @@ export const Products: React.FC = () => {
     
     router.replace(`/products?active=${product.id}`) // Navigate to product page with product id as parameter
     setSelectedProduct(product);
+
   }, []);
 
   const handleCloseModal = useCallback(() => {
@@ -40,7 +41,9 @@ export const Products: React.FC = () => {
 
     if(activeProduct && paginatedProducts?.length > 0){
       const ProData = paginatedProducts?.find(ele => ele?.id == activeProduct)
-      ProData ? setSelectedProduct(ProData) : null
+      if(ProData){
+        setSelectedProduct(ProData)
+      }
     }else{
       handleCloseModal()
     }
