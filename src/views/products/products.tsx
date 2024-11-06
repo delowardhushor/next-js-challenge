@@ -13,7 +13,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 export const Products: React.FC = () => {
   const router = useRouter()
 
-  let searchParams = useSearchParams();
+  const searchParams = useSearchParams();
 
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const {
@@ -39,7 +39,7 @@ export const Products: React.FC = () => {
     const activeProduct = searchParams.get('active')
 
     if(activeProduct && paginatedProducts?.length > 0){
-      let ProData = paginatedProducts?.find(ele => ele?.id == activeProduct)
+      const ProData = paginatedProducts?.find(ele => ele?.id == activeProduct)
       ProData ? setSelectedProduct(ProData) : null
     }else{
       handleCloseModal()
